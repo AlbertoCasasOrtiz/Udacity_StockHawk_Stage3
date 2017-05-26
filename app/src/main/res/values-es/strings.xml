@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_add_stock">Añadir Stock</string>
+    <string name="change">Cambio (%):</string>
+    <string name="change_absolute">Cambio ($):</string>
+    <string name="dialog_add">Añadir</string>
+    <string name="dialog_cancel">Cancelar</string>
+    <string name="dialog_hint">Símbolo (ej. GOOG)</string>
+    <string name="dialog_title">Añadir Stock</string>
+    <string name="empty_forecast_list">No hay datos que mostrar.</string>
+    <string name="error_no_network">No hay conexión de red! Se cagaran los datos cuando la red esté disponible.</string>
+    <string name="error_no_stocks">No has añadido stocks! Pulsa el botón flotanto para añadir uno.</string>
+    <string name="graphic_description">Gráfico con datos a lo largo del tiempo.</string>
+    <string name="price">Precio:</string>
+    <string name="stock_name">Nombre de stock:</string>
+    <string name="stock_symbol">Símbolo de stock:</string>
+    <string name="toast_no_connectivity">Se actualizará cuando la red esté disponible.</string>
+    <string name="toast_stock_added_no_connectivity">Símbolo %s añadido. Se actualizará cuando la red este disponible.</string>
+    <string name="action_change_units">Cambiar unidad</string>
+</resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/widget"
+    android:gravity="center_vertical"
+    android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true"
+    android:orientation="horizontal"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/symbol_widget"
+        style="@style/StockSymbolTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="8dp"
+        android:padding="2dp"
+        android:textColor="@color/ap_white"
+        android:textSize="20sp"
+        tools:text="MSFT"
+        android:layout_weight="0.5"
+        />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/widget_sublayout"
+        android:gravity="end"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_weight="0.5">
+
+        <TextView
+            android:id="@+id/price_widget"
+            android:textAlignment="center"
+            android:padding="2dp"
+            android:textSize="15sp"
+            style="@style/BidPriceTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ap_white"
+            tools:text="$1000.00"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:id="@+id/change_widget"
+            android:textAlignment="center"
+            android:padding="2dp"
+            android:textSize="15sp"
+            style="@style/BidPriceTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ap_white"
+            tools:text="0.5%"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
+
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/widget"
+    android:gravity="center"
+    android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/symbol_widget"
+        android:textAlignment="center"
+        android:padding="2dp"
+        style="@style/StockSymbolTextStyle"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/ap_white"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        tools:text="MSFT" />
+
+    <TextView
+        android:id="@+id/price_widget"
+        android:textAlignment="center"
+        android:padding="2dp"
+        android:textSize="15sp"
+        style="@style/BidPriceTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/ap_white"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        tools:text="$1000.00" />
+
+</LinearLayout>
