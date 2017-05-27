@@ -137,12 +137,12 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
             clickHandler.onClick(cursor.getString(symbolColumn));
 
             Intent intent = new Intent(context, GraphActivity.class);
-            intent.putExtra("extra_history", history);
-            intent.putExtra("extra_symbol", symbol.getText());
-            intent.putExtra("extra_price", price.getText());
-            intent.putExtra("extra_change_percentage", change.getText());
-            intent.putExtra("extra_change_absolute", changeAbsolute);
-            intent.putExtra("extra_stock_name", stockName);
+            intent.putExtra(context.getString(R.string.key_history), history);
+            intent.putExtra(context.getString(R.string.key_symbol), symbol.getText());
+            intent.putExtra(context.getString(R.string.key_price), price.getText());
+            intent.putExtra(context.getString(R.string.key_change_percentage), change.getText());
+            intent.putExtra(context.getString(R.string.key_change_absolute), changeAbsolute);
+            intent.putExtra(context.getString(R.string.key_stock_name), stockName);
 
             context.startActivity(intent);
         }

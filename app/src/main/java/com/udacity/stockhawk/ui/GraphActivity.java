@@ -2,6 +2,7 @@ package com.udacity.stockhawk.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -25,20 +26,8 @@ import java.util.GregorianCalendar;
 
 public class GraphActivity extends AppCompatActivity {
 
-    private XYPlot plot;
     private String history;
     private String symbol;
-    private String price;
-    private String changePercentage;
-    private String changeAbsolute;
-    private String stockName;
-
-
-    private TextView tvStockName;
-    private TextView tvStockSymbol;
-    private TextView tvStockPrice;
-    private TextView tvStockChangePercentage;
-    private TextView tvStockChangeAbsolute;
 
 
     @Override
@@ -54,39 +43,39 @@ public class GraphActivity extends AppCompatActivity {
 
         Intent intentThatStartedThisActivity = getIntent();
 
-        this.tvStockName = (TextView) findViewById(R.id.tv_stock_name);
-        this.tvStockSymbol = (TextView) findViewById(R.id.tv_stock_symbol);
-        this.tvStockPrice = (TextView) findViewById(R.id.tv_price);
-        this.tvStockChangePercentage = (TextView) findViewById(R.id.tv_change_percentage);
-        this.tvStockChangeAbsolute = (TextView) findViewById(R.id.tv_change_absolute);
+        TextView tvStockName = (TextView) findViewById(R.id.tv_stock_name);
+        TextView tvStockSymbol = (TextView) findViewById(R.id.tv_stock_symbol);
+        TextView tvStockPrice = (TextView) findViewById(R.id.tv_price);
+        TextView tvStockChangePercentage = (TextView) findViewById(R.id.tv_change_percentage);
+        TextView tvStockChangeAbsolute = (TextView) findViewById(R.id.tv_change_absolute);
 
-        if(intentThatStartedThisActivity.hasExtra("extra_history")){
-            this.history = intentThatStartedThisActivity.getStringExtra("extra_history");
+        if(intentThatStartedThisActivity.hasExtra(getString(R.string.key_history))){
+            this.history = intentThatStartedThisActivity.getStringExtra(getString(R.string.key_history));
         }
-        if(intentThatStartedThisActivity.hasExtra("extra_symbol")){
-            this.symbol = intentThatStartedThisActivity.getStringExtra("extra_symbol");
-            this.tvStockSymbol.setText(getResources().getString(R.string.stock_symbol) + " " + this.symbol);
+        if(intentThatStartedThisActivity.hasExtra(getString(R.string.key_symbol))){
+            this.symbol = intentThatStartedThisActivity.getStringExtra(getString(R.string.key_symbol));
+            tvStockSymbol.setText(getResources().getString(R.string.stock_symbol) + " " + this.symbol);
         }
-        if(intentThatStartedThisActivity.hasExtra("extra_price")){
-            this.price = intentThatStartedThisActivity.getStringExtra("extra_price");
-            this.tvStockPrice.setText(getResources().getString(R.string.price) + " " + this.price);
+        if(intentThatStartedThisActivity.hasExtra(getString(R.string.key_price))){
+            String price = intentThatStartedThisActivity.getStringExtra(getString(R.string.key_price));
+            tvStockPrice.setText(getResources().getString(R.string.price) + " " + price);
         }
-        if(intentThatStartedThisActivity.hasExtra("extra_change_percentage")){
-            this.changePercentage = intentThatStartedThisActivity.getStringExtra("extra_change_percentage");
-            this.tvStockChangePercentage.setText(getResources().getString(R.string.change) + " " + this.changePercentage);
+        if(intentThatStartedThisActivity.hasExtra(getString(R.string.key_change_percentage))){
+            String changePercentage = intentThatStartedThisActivity.getStringExtra(getString(R.string.key_change_percentage));
+            tvStockChangePercentage.setText(getResources().getString(R.string.change) + " " + changePercentage);
         }
-        if(intentThatStartedThisActivity.hasExtra("extra_change_absolute")){
-            this.changeAbsolute = intentThatStartedThisActivity.getStringExtra("extra_change_absolute");
-            this.tvStockChangeAbsolute.setText(getResources().getString(R.string.change_absolute) + " " + this.changeAbsolute + "$");
+        if(intentThatStartedThisActivity.hasExtra(getString(R.string.key_change_absolute))){
+            String changeAbsolute = intentThatStartedThisActivity.getStringExtra(getString(R.string.key_change_absolute));
+            tvStockChangeAbsolute.setText(getResources().getString(R.string.change_absolute) + " " + changeAbsolute + "$");
         }
-        if(intentThatStartedThisActivity.hasExtra("extra_stock_name")){
-            this.stockName = intentThatStartedThisActivity.getStringExtra("extra_stock_name");
-            this.tvStockName.setText(getResources().getString(R.string.change) + " " + this.stockName);
-            setTitle(this.stockName);
+        if(intentThatStartedThisActivity.hasExtra(getString(R.string.key_stock_name))){
+            String stockName = intentThatStartedThisActivity.getStringExtra(getString(R.string.key_stock_name));
+            tvStockName.setText(getResources().getString(R.string.change) + " " + stockName);
+            setTitle(stockName);
         }
 
         //GRAPH
-        plot = (XYPlot) findViewById(R.id.plot);
+        XYPlot plot = (XYPlot) findViewById(R.id.plot);
 
         final String[] domainLabels = extractMonthsFromHistory(history);
         Number[] series1Numbers = extractValuesFromHistory(history);
@@ -103,12 +92,12 @@ public class GraphActivity extends AppCompatActivity {
         plot.setDomainStepValue(12);
         plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).setFormat(new Format() {
             @Override
-            public StringBuffer format(Object obj, StringBuffer toAppendTo, FieldPosition pos) {
+            public StringBuffer format(Object obj, @NonNull StringBuffer toAppendTo, @NonNull FieldPosition pos) {
                 int i = Math.round(((Number) obj).floatValue());
                 return toAppendTo.append(domainLabels[i]);
             }
             @Override
-            public Object parseObject(String source, ParsePosition pos) {
+            public Object parseObject(String source, @NonNull ParsePosition pos) {
                 return null;
             }
         });

@@ -17,4 +17,8 @@
     <string name="toast_no_connectivity">Se actualizará cuando la red esté disponible.</string>
     <string name="toast_stock_added_no_connectivity">Símbolo %s añadido. Se actualizará cuando la red este disponible.</string>
     <string name="action_change_units">Cambiar unidad</string>
+    <string name="stock_already_exists">El stock %s ya existe!</string>
+    <string name="stock_dont_exist">El stock %s no existe!</string>
+    <string name="stock_is_not_valid">El stock %s no es válido!</string>
+    <string name="error_fetch_stock_quotes">Error obteniendo stock!</string>
 </resources>

@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         @Override
         public void onReceive(Context context, Intent intent) {
             // here you can update your db with new messages and update the ui (chat message list)
-            Toast.makeText(context, intent.getStringExtra("stock_dont_exist"), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, intent.getStringExtra(getString(R.string.error_stock_dosnt_exist)), Toast.LENGTH_LONG).show();
         }
     };
 
@@ -152,11 +152,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
             Set<String> stocks = PrefUtils.getStocks(this);
 
-            if(!stocks.contains(symbol)) {
-                PrefUtils.addStock(this, symbol);
-            }
-            else{
-                Toast.makeText(this, "Stock " + symbol + " already exists!", Toast.LENGTH_LONG).show();
+            if(symbol.matches("[a-zA-Z]+")) {
+                if (!stocks.contains(symbol.toUpperCase())) {
+                    PrefUtils.addStock(this, symbol);
+                } else {
+                    Toast.makeText(this, String.format(getString(R.string.stock_already_exists), symbol), Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(this, String.format(getString(R.string.stock_is_not_valid), symbol), Toast.LENGTH_LONG).show();
             }
 
             QuoteSyncJob.syncImmediately(this);
@@ -223,9 +226,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if(intent.hasExtra("stock_dont_exist")) {
-                String nonExistingStock = intent.getStringExtra("stock_dont_exist");
-                Toast.makeText(getApplicationContext(), "Stock " + nonExistingStock + " does not exists.", Toast.LENGTH_SHORT).show();
+            if(intent.hasExtra(getString(R.string.key_stock_dont_exist))) {
+                String nonExistingStock = intent.getStringExtra(getString(R.string.key_stock_dont_exist));
+                Toast.makeText(getApplicationContext(), String.format(getString(R.string.stock_dont_exist), nonExistingStock), Toast.LENGTH_SHORT).show();
             }
         }
     };

@@ -23,9 +23,6 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-/**
- * Created by alber on 21/05/2017.
- */
 
 public class WidgetService extends IntentService{
 
@@ -43,16 +40,6 @@ public class WidgetService extends IntentService{
     private static final int INDEX_PRICE = 1;
     private static final int INDEX_PERCENTAGE_CHANGE = 2;
     private static final int INDEX_STOCK_NAME = 3;
-
-    /**
-     * Creates an IntentService.  Invoked by your subclass's constructor.
-     *
-     * @param name Used to name the worker thread, important only for debugging.
-     */
-    public WidgetService(String name) {
-        super(name);
-        dollarFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);
-    }
 
     public WidgetService() {
         super("WidgetService");
@@ -120,9 +107,6 @@ public class WidgetService extends IntentService{
 
     private int getWidgetWidth(AppWidgetManager appWidgetManager, int appWidgetId) {
         // Prior to Jelly Bean, widgets were always their default size
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-            return getResources().getDimensionPixelSize(R.dimen.widget_today_default_width);
-        }
         // For Jelly Bean and higher devices, widgets can be resized - the current size can be
         // retrieved from the newly added App Widget Options
         return getWidgetWidthFromOptions(appWidgetManager, appWidgetId);

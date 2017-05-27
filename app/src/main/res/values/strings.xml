@@ -43,4 +43,20 @@
     <string name="change">Change (%):</string>
     <string name="change_absolute">Change ($):</string>
 
+
+    <string name="key_history" translatable="false">extra_history</string>
+    <string name="key_symbol" translatable="false">extra_symbol</string>
+    <string name="key_price" translatable="false">extra_price</string>
+    <string name="key_change_percentage" translatable="false">extra_change_percentage</string>
+    <string name="key_change_absolute" translatable="false">extra_change_absolute</string>
+    <string name="key_stock_name" translatable="false">extra_stock_name</string>
+    <string name="error_stock_dosnt_exist" translatable="false">stock_dont_exist</string>
+    <string name="key_stock_dont_exist" translatable="false">stock_dont_exist</string>
+
+    <string name="stock_already_exists">Stock %s already exists!</string>
+    <string name="stock_is_not_valid">Stock %s is not valid!</string>
+    <string name="stock_dont_exist">Stock %s does not exists.</string>
+    <string name="error_fetch_stock_quotes">Error fetching stock quotes</string>
+
+
 </resources>

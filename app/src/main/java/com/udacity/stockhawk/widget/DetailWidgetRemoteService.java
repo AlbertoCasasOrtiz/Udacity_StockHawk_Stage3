@@ -15,12 +15,10 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-/**
- * Created by alber on 23/05/2017.
- */
+
 public class DetailWidgetRemoteService extends RemoteViewsService {
 
-    private final DecimalFormat dollarFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);;
+    private final DecimalFormat dollarFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);
 
     private static final String[] FORECAST_COLUMNS = {
             Contract.Quote.COLUMN_SYMBOL,
@@ -118,16 +116,14 @@ public class DetailWidgetRemoteService extends RemoteViewsService {
                         null);
                 Binder.restoreCallingIdentity(identityToken);
 
-                String history = "";
-
                 if(data != null && data.getCount() > 0) {
                     data.moveToPosition(position);
-                    fillInIntent.putExtra("extra_history", data.getString(INDEX_HISTORY));
-                    fillInIntent.putExtra("extra_symbol", data.getString(INDEX_SYMBOL));
-                    fillInIntent.putExtra("extra_price", data.getFloat(INDEX_PRICE)+"$");
-                    fillInIntent.putExtra("extra_change_percentage", data.getFloat(INDEX_PERCENTAGE_CHANGE)+"%");
-                    fillInIntent.putExtra("extra_change_absolute", data.getFloat(INDEX_ABSOLUTE_CHANGE)+"");
-                    fillInIntent.putExtra("extra_stock_name", data.getString(INDEX_STOCK_NAME));
+                    fillInIntent.putExtra(getResources().getString(R.string.key_history), data.getString(INDEX_HISTORY));
+                    fillInIntent.putExtra(getResources().getString(R.string.key_symbol), data.getString(INDEX_SYMBOL));
+                    fillInIntent.putExtra(getResources().getString(R.string.key_price), data.getFloat(INDEX_PRICE)+"$");
+                    fillInIntent.putExtra(getResources().getString(R.string.key_change_percentage), data.getFloat(INDEX_PERCENTAGE_CHANGE)+"%");
+                    fillInIntent.putExtra(getResources().getString(R.string.key_change_absolute), data.getFloat(INDEX_ABSOLUTE_CHANGE)+"");
+                    fillInIntent.putExtra(getResources().getString(R.string.key_stock_name), data.getString(INDEX_STOCK_NAME));
 
                 }
                 fillInIntent.setData(uri);

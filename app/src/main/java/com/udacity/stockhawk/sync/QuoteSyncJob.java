@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.TextUtils;
 
+import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.PrefUtils;
 import com.udacity.stockhawk.mock.MockUtils;
@@ -128,12 +129,12 @@ public final class QuoteSyncJob {
             Intent dataUpdatedIntent = new Intent(ACTION_DATA_UPDATED);
 
             if(!TextUtils.isEmpty(nonExistingStock))
-                dataUpdatedIntent.putExtra("stock_dont_exist", nonExistingStock);
+                dataUpdatedIntent.putExtra(context.getString(R.string.key_stock_dont_exist), nonExistingStock);
 
             context.sendBroadcast(dataUpdatedIntent);
 
         } catch (IOException exception) {
-            Timber.e(exception, "Error fetching stock quotes");
+            Timber.e(exception, context.getString(R.string.error_fetch_stock_quotes));
         }
     }
 
